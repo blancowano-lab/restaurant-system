@@ -142,8 +142,8 @@ with pestana2:
 with pestana3:
     st.subheader("🧾 Contabilidad de Caja e Impuestos Rápidos")
     
-    # Configurado por defecto con el 19% del IVA de Chile
-    porcentaje_iva = st.selectbox("Elige la tasa de impuesto local (IVA %):",, index=0)
+    # CORREGIDO: Se agregaron las opciones numéricas del IVA al selectbox
+    porcentaje_iva = st.selectbox("Elige la tasa de impuesto local (IVA %):", [19, 16, 12, 21, 10, 0], index=0)
     tipo_calculo = st.radio("¿Qué operación contable vas a realizar?:", ["A. Desglosar desde precio NETO", "B. Desglosar desde precio TOTAL"])
     
     if tipo_calculo == "A. Desglosar desde precio NETO":
