@@ -51,13 +51,9 @@ with pestana1:
         "Función 5: Tarjeta de Reseñas de 5 Estrellas (Google Maps)"
     ])
     
-    # Enlace fijo de tu aplicación ya subida a internet
-    enlace_fijo_cliente = "https://streamlit.app"
-    
-    # Lógica interna para configurar los datos de los 5 tipos de QR
+    # Lógica interna corregida para configurar los datos de los 5 tipos de QR de forma independiente
     if "Función 1" in opcion_qr:
-        st.info(f"El QR apuntará al menú digital de este sistema: {enlace_fijo_cliente}")
-        datos_qr = enlace_fijo_cliente
+        datos_qr = st.text_input("🔗 Pega aquí el link del Instagram, Facebook o Menú Web del restaurante:", "https://instagram.com")
     elif "Función 2" in opcion_qr:
         nombre_red = st.text_input("Nombre de la Red Wi-Fi (SSID):", "WiFi_Restaurante")
         clave_red = st.text_input("Contraseña del Wi-Fi del local:", "12345678", type="password")
@@ -102,7 +98,6 @@ with pestana1:
 with pestana2:
     st.subheader("🥩 Control Financiero de Platos y Recetas")
     
-    # ¡Línea Corregida de las 3 columnas!
     col1, col2, col3 = st.columns(3)
     with col1:
         costo_ingredientes = st.number_input("Costo de alimentos de la receta:", min_value=0, value=2500)
@@ -148,7 +143,7 @@ with pestana3:
     st.subheader("🧾 Contabilidad de Caja e Impuestos Rápidos")
     
     # Configurado por defecto con el 19% del IVA de Chile
-    porcentaje_iva = st.selectbox("Elige la tasa de impuesto local (IVA %):", [19, 10, 5, 0], index=0)
+    porcentaje_iva = st.selectbox("Elige la tasa de impuesto local (IVA %):",, index=0)
     tipo_calculo = st.radio("¿Qué operación contable vas a realizar?:", ["A. Desglosar desde precio NETO", "B. Desglosar desde precio TOTAL"])
     
     if tipo_calculo == "A. Desglosar desde precio NETO":
