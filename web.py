@@ -20,6 +20,29 @@ pestana1, pestana2, pestana3 = st.tabs(["🖨️ Módulo QR (Funciones 1 a 5)", 
 with pestana1:
     st.subheader("📊 Control y Creación de Códigos QR")
     
+    # === AQUÍ COMIENZA TU BLOQUE DE PUBLICIDAD DE GOOGLE ADSENSE ===
+    st.caption("📢 Publicidad comercial recomendada:")
+    
+    # Recuerda cambiar las letras 'X' por tus números reales cuando Google apruebe tu cuenta
+    codigo_anuncio_google = """
+    <script async src="https://googlesyndication.com"
+         crossorigin="anonymous"></script>
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-XXXXXXXXXXXX"
+         data-ad-slot="XXXXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+    """
+    
+    # Esta línea de Python dibuja el anuncio arriba de la pantalla
+    st.components.v1.html(codigo_anuncio_google, height=120, scrolling=False)
+    st.markdown("---")
+    # === AQUÍ TERMINA TU BLOQUE DE PUBLICIDAD ===
+
     opcion_qr = st.selectbox("Elige qué tipo de código QR comercial deseas fabricar hoy:", [
         "Función 1: Enlace Web (Instagram o Menú Digital)", 
         "Función 2: Conexión Wi-Fi automática para Clientes", 
@@ -28,16 +51,20 @@ with pestana1:
         "Función 5: Tarjeta de Reseñas de 5 Estrellas (Google Maps)"
     ])
     
+    # Enlace fijo de tu aplicación ya subida a internet
+    enlace_fijo_cliente = "https://streamlit.app"
+    
     # Lógica interna para configurar los datos de los 5 tipos de QR
     if "Función 1" in opcion_qr:
-        datos_qr = st.text_input("🔗 Pega el link de la carta web o perfil de Instagram:", "https://instagram.com")
+        st.info(f"El QR apuntará al menú digital de este sistema: {enlace_fijo_cliente}")
+        datos_qr = enlace_fijo_cliente
     elif "Función 2" in opcion_qr:
         nombre_red = st.text_input("Nombre de la Red Wi-Fi (SSID):", "WiFi_Restaurante")
         clave_red = st.text_input("Contraseña del Wi-Fi del local:", "12345678", type="password")
         datos_qr = f"WIFI:S:{nombre_red};T:WPA;P:{clave_red};;"
     elif "Función 3" in opcion_qr:
         num_mesa = st.text_input("Número de Mesa (ej: Mesa 3):", "Mesa 3")
-        telefono = st.text_input("WhatsApp de la Barra/Cocina:", "56912345678")
+        telefono = st.text_input("WhatsApp de la Barra/Cocina (con código de país, ej: 56912345678):", "56912345678")
         datos_qr = f"https://wa.me{telefono}?text=Hola,%20necesitamos%20asistencia%20en%20la%20{num_mesa.replace(' ', '%20')}"
     elif "Función 4" in opcion_qr:
         num_mesa_c = st.text_input("Número de Mesa que pide la cuenta:", "Mesa 3")
@@ -53,6 +80,7 @@ with pestana1:
     if st.button("🔥 GENERAR QR COMERCIAL"):
         qr = qrcode.QRCode(version=5, error_correction=qrcode.constants.ERROR_CORRECT_H, box_size=10, border=3)
         qr.add_data(datos_qr)
+        qr.make(fit=True)
         img = qr.make_image(fill_color=color_qr, back_color="#FFFFFF").convert("RGB")
         
         # Estilo del icono en medio
@@ -74,7 +102,7 @@ with pestana1:
 with pestana2:
     st.subheader("🥩 Control Financiero de Platos y Recetas")
     
-    # ¡LÍNEA CORREGIDA AQUÍ! Ahora se desempaquetan las 3 columnas perfectamente
+    # ¡Línea Corregida de las 3 columnas!
     col1, col2, col3 = st.columns(3)
     with col1:
         costo_ingredientes = st.number_input("Costo de alimentos de la receta:", min_value=0, value=2500)
@@ -119,7 +147,8 @@ with pestana2:
 with pestana3:
     st.subheader("🧾 Contabilidad de Caja e Impuestos Rápidos")
     
-    porcentaje_iva = st.selectbox("Elige la tasa de impuesto local (IVA %):", [19, 16, 12, 21], index=0)
+    # Configurado por defecto con el 19% del IVA de Chile
+    porcentaje_iva = st.selectbox("Elige la tasa de impuesto local (IVA %):", [19, 10, 5, 0], index=0)
     tipo_calculo = st.radio("¿Qué operación contable vas a realizar?:", ["A. Desglosar desde precio NETO", "B. Desglosar desde precio TOTAL"])
     
     if tipo_calculo == "A. Desglosar desde precio NETO":
