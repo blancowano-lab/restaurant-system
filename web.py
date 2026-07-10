@@ -20,16 +20,16 @@ pestana1, pestana2, pestana3 = st.tabs(["🖨️ Módulo QR (Funciones 1 a 5)", 
 with pestana1:
     st.subheader("📊 Control y Creación de Códigos QR")
     
-    # === AQUÍ COMIENZA TU BLOQUE DE PUBLICIDAD DE GOOGLE ADSENSE ===
+        # === TU BLOQUE DE PUBLICIDAD DE GOOGLE ADSENSE CORREGIDO ===
     st.caption("📢 Publicidad comercial recomendada:")
     
-    # Recuerda cambiar las letras 'X' por tus números reales cuando Google apruebe tu cuenta
+    # REEMPLAZA LAS 'X' de data-ad-slot CON EL NÚMERO DE TU ANUNCIO
     codigo_anuncio_google = """
-    <script async src="https://googlesyndication.com"
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8648520169162303"
          crossorigin="anonymous"></script>
     <ins class="adsbygoogle"
          style="display:block"
-         data-ad-client="ca-pub-XXXXXXXXXXXX"
+         data-ad-client="ca-pub-8648520169162303"
          data-ad-slot="XXXXXXXXX"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
@@ -42,6 +42,7 @@ with pestana1:
     st.components.v1.html(codigo_anuncio_google, height=120, scrolling=False)
     st.markdown("---")
     # === AQUÍ TERMINA TU BLOQUE DE PUBLICIDAD ===
+
 
     opcion_qr = st.selectbox("Elige qué tipo de código QR comercial deseas fabricar hoy:", [
         "Función 1: Enlace Web (Instagram o Menú Digital)", 
