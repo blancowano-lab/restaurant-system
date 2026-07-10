@@ -30,7 +30,7 @@ with pestana1:
     <ins class="adsbygoogle"
          style="display:block"
          data-ad-client="ca-pub-8648520169162303"
-         data-ad-slot="XXXXXXXXX"
+         data-ad-slot="1948823718"
          data-ad-format="auto"
          data-full-width-responsive="true"></ins>
     <script>
